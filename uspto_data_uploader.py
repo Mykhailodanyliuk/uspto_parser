@@ -111,7 +111,5 @@ if __name__ == '__main__':
         client = pymongo.MongoClient('mongodb://localhost:27017')
         upload_all_uspto_zips()
         work_time = int(time.time() - start_time)
-        print(work_time)
-        print(14400 - work_time)
-        time.sleep(14400 - work_time)
         client.close()
+        time.sleep(abs(work_time % 14400 - 14400))
